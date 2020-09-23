@@ -1,0 +1,1 @@
+select p2.name from Pokemon as p2 where p2.type in (select tmp2.type from (select p1.type, count(*) as type_cnt1 from Pokemon as p1 group by p1.type having type_cnt1 in (select * from (select count(*) as type_cnt0 from Pokemon as p0 group by p0.type order by type_cnt0 desc limit 2) as tmp1)) as tmp2) order by p2.name asc;
